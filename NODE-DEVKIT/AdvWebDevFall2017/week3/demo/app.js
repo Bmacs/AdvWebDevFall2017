@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var debug = require('debug')('demo:app');
+var expressValidator = require('express-validator');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -20,13 +20,9 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator()); // Add this after the bodyParser middlewares!
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(function (req, res, next) {
-    debug('Time:', Date.now())
-    next()
-})
 
 app.use('/', index);
 app.use('/users', users);
