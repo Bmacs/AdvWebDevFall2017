@@ -3,7 +3,7 @@ extends layout
 block content
     h2= title
     .links
-    a(href='form') Form page <br />
+    a(href='/') Index <br />
     a(href='about') About page <br />
     form(action="/form", method="post")
         .form-group
@@ -14,6 +14,6 @@ block content
             input(type="text", name="email")
         .form-group
             label Comments <br />
-            input(type="text", name="comment")
+            input(type="text", name="comments")
         .submit
             input(type="submit")

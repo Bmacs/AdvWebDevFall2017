@@ -1,10 +1,15 @@
 extends layout
 
 block content
+    .links
+        a(href='/') Index <br />
+        a(href='form') Form page <br />
+        a(href='about') About page <br />
     h2= title
+    .form-group
         .name
-            h2= title
+            p Name: #{name}
         .email
-            h2= title
+            p Email: #{email}
         .comments
-            h3= title
+            p Comments: #{comments}

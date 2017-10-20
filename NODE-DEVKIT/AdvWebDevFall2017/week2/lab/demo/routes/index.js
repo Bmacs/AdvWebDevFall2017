@@ -9,22 +9,18 @@ router.get('/', function(req, res, next) {
 router.get('/form', function(req, res, next) {
     res.render('form', { title: 'Brendan', msg: "hello there" });
 }).post('/form', function(req, res, next) {
-    res.render('form', { title: req.body.email, msg: "hello there" });
-}).post('/form', function(req, res, next) {
-    res.render('form', { title: req.body.name, msg: "hello there" });
-}).post('/form', function(req, res, next) {
-    res.render('form', { title: req.body.comment, msg: "hello there" });
+        res.render('results', {
+            title: 'Results',
+            name: req.body.name,
+            email: req.body.email,
+            comments: req.body.comments
+        });
 });
 
 router.get('/results', function(req, res, next) {
-    res.render('results', { title: 'Results Page' });
-}).get('/form', function(req, res, next) {
-    res.render('form', { title: req.body.name });
-}).get('/form', function(req, res, next) {
-    res.render('form', { title: req.body.email });
-}).get('/form', function(req, res, next) {
-    res.render('form', { title: req.body.comment });
+    res.render('results', {title: 'Results Page'});
 });
+
 
 
 router.get('/about', function(req, res, next) {
