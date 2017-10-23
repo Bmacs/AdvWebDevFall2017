@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} <br />
+    a(href='404') Error Page <br />
+    .form-group
+      label Number <br />
+      select
+        +dropdown
+      input(type="submit")
+  table
+    +table()
+
+mixin dropdown()
+  // values for dropdown
+  -var options = [3,4,5,10,20];
+  // loop to populate dropdown
+  each option in options
+    option(value=option)= option
+
+
+mixin grid(input)
+  int i = 0;
+    while i < input
+      -var color = ((1<<24)*Math.random()|0).toString(16);
+        tr(style='background-color:#' + color + ';')= color
+        -i++
+
+mixin table(input)
+  -var i = 0;
+    tbody
+      while i < input
+        +grid(input)
+        -i++;

@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.rotate {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.shrink {
+  -webkit-transform:scale(0.5);
+  -moz-transform:scale(0.5);
+  -ms-transform:scale(0.5);
+  transform:scale(0.5);
+}

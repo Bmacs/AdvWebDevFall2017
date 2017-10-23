@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+  p ERROR 404 <br />
+    a(href='/') Index <br />
+      table
+        +classes
+
+mixin error()
+  -var max = 50
+  -var min = 20
+  -var divs = Math.floor(Math.random() * (max - min + 1) + min)
+
+mixin classes(divs)
+  -var rand = ["still", "rotate", "shrink"]
+    //loop through and make divs with random classes based on the rand var
+  -var i = 0
+    table
+      tr
+        while i < divs
+          td(class=rand[rand]) = 404
+          -i++
+
+
+
+
