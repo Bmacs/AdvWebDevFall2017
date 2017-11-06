@@ -1,4 +1,3 @@
-
 var Employee = require('./employee.model');
 var debug = require('debug')('demo:employees');
 

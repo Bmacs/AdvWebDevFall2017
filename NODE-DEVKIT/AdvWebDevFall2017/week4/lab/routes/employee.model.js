@@ -6,7 +6,7 @@ var employeeSchema = new mongoose.Schema({
         required: [true, 'First Name is required']
     },
     lastName: {
-        type: Number,
+        type: String,
         required: [true, 'Last Name is required']
     },
     department: {
