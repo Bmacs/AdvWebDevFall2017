@@ -3,3 +3,28 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+    a(href="./view") View
+  h2=message
+    form(action="/", method="post")
+      .form-group
+        input(type="text", name="firstName", placeholder="First Name")
+        <br />
+        input(type="text", name="lastName", placeholder="Last Name")
+        <br />
+        select(name="department")
+          +dropdown
+        <br />
+        input(type="date", name="startDate", placeholder="Date")
+        <br />
+        input(type="text", name="jobTitle", placeholder="Job Title")
+        <br />
+        input(type="text", name="salary", placeholder="Salary")
+        <br />
+        input(type="submit", name="submit" value="Add Employee")
+
+mixin dropdown()
+  // values for dropdown
+  -var options = ["Manager", "IT", "HR", "Secretary"];
+  // loop to populate dropdown
+  each option in options
+    option(value=option)= option

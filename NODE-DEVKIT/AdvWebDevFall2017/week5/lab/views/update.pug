@@ -1,0 +1,33 @@
+extends layout
+
+block content
+ h1=title
+ p
+    a(href="../view") View
+ h2=message
+ form(action="/update", method="post", role="form")
+        .form-group
+            input(type="text", name="firstName", placeholder="First Name" value=results.firstName)
+            <br />
+            input(type="text", name="lastName", placeholder="Last Name" value=results.lastName)
+            <br />
+            select(name="department" value=results.department)
+                +dropdown
+            <br />
+            input(type="date", name="startDate", placeholder="Date" value=results.startDate)
+            <br />
+            input(type="text", name="jobTitle", placeholder="Job Title" value=results.jobTitle)
+            <br />
+            input(type="text", name="salary", placeholder="Salary" value=results.salary)
+            <br />
+            input(type="hidden" name="_id" value=results._id)
+            input(type="submit", name="submit" value="Add Employee")
+
+
+
+mixin dropdown()
+    // values for dropdown
+    -var options = ["Manager", "IT", "HR", "Secretary"];
+    // loop to populate dropdown
+    each option in options
+        option(value=option)= option

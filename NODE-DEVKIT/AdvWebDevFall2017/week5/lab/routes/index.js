@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var ctrlHome = require('./employee.controller');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
+router.get('/employees', ctrlHome.readAllEmployees);
+router.get('/employees/:id', ctrlHome.readOneEmployee);
+router.post('/employees', ctrlHome.createEmployee); // ? makes the route optional
+router.put('/employees/:id', ctrlHome.updateEmployee);
+router.delete('/employees/:id', ctrlHome.deleteEmployee);
 
 module.exports = router;
