@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
 var debug = require('debug')('demo:mongo');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/Employees';
+var dbURI = 'mongodb://localhost/Reviews';
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
 
 mongoose.connect(dbURI, {
-    useMongoClient: true,
-    /* other options */
+  useMongoClient: true,
+  /* other options */
 });
 
 mongoose.Promise = Promise;
@@ -19,7 +19,7 @@ mongoose.connection.on('connected', function() {
 });
 mongoose.connection.on('error', function(err) {
     debug('Mongoose connection error: ' + err);
-    process.exit(0);
+     process.exit(0);
 });
 mongoose.connection.on('disconnected', function() {
     debug('Mongoose disconnected');
@@ -53,5 +53,5 @@ process.on('SIGTERM', function() {
 });
 
 process.on('exit', function(code) {
-    debug('About to exit with code: ', code);
+  debug('About to exit with code: ', code);
 });
