@@ -3,25 +3,25 @@ class Model extends BaseModel {
     constructor() {
         super()  
         this.APIS = {
-            Todo : 'public/todo.json'
+            Employees : `http://localhost:3001/api/v1/employees/`
         }
     }
     
     
     getTodoList() {
-        return this.http.get(this.APIS.Todo)
+        return this.http.get(this.APIS.Employees)
                 .then( data => {
-                   return Components.todoTable(data).then(html => { return this.dataBindModel.todoTable = html })
+                   return Components.employeesTable(data).then(html => { return this.dataBindModel.employeesTable = html })
                 })
     }
     
     deleteTodo(evt) {
-       const url = `${this.APIS.Todo}${evt.target.dataset.id}`
+       const url = `${this.APIS.Employees}${evt.target.dataset.id}`
        return this.http.delete(url)
                 .then( ()=>{
-                   return this.dataBindModel.deleteResultMsg = 'Todo Deleted'                                
+                   return this.dataBindModel.deleteResultMsg = 'Employee Deleted'                                
                 }).catch( err => {
-                    return this.dataBindModel.deleteResultMsg = 'Todo was NOT Deleted'                                 
+                    return this.dataBindModel.deleteResultMsg = 'Employee was NOT Deleted'                                 
                 }).then( () => {
                    return this.getTodoList()
                 })
@@ -36,15 +36,19 @@ class Model extends BaseModel {
             return Promise.resolve()
         }
         const data = {
-           title : this.dataBindModel.title,
-           completed : this.dataBindModel.completed
+            firstname : this.dataBindModel.firstname,
+            lastname : this.dataBindModel.lastname,
+            department: this.dataBindModel.department,
+            startdate: this.dataBindModel.startDate,
+            jobtitle: this.dataBindModel.jobTitle,
+            salary: this.dataBindModel.salary
         }                    
-        return this.http.post(this.APIS.Todo, data)
+        return this.http.post(this.APIS.Employees, data)
                 .then( data => {
-                   this.dataBindModel.saveResultMsg = 'Todo Saved'
+                   this.dataBindModel.saveResultMsg = 'Employee Saved'
                    return data
                 }).catch( err => {
-                   this.dataBindModel.saveResultMsg = 'Todo was NOT Saved'   
+                   this.dataBindModel.saveResultMsg = 'Employee was NOT Saved'   
                    return err
                 })  
     }
@@ -55,9 +59,16 @@ class Model extends BaseModel {
     }
         
     updatePageLoad() {
-        const url = `${this.APIS.Todo}${this.urlParams().get('id')}`
+        const url = `${this.APIS.Employees}${this.urlParams().get('id')}`
         return this.http.get(url).then( data => {           
-            this.dataBindModel = {title: data.title, completed: data.completed, id: data.id }
+            this.dataBindModel = {
+                firstname : this.dataBindModel.firstname,
+                lastname : this.dataBindModel.lastname,
+                department: this.dataBindModel.department,
+                startdate: this.dataBindModel.startDate.substring(0, data.startDate.indexOf("T")),
+                jobtitle: this.dataBindModel.jobTitle,
+                salary: this.dataBindModel.salary,
+                id: data.id }
             return data
         })     
     }
@@ -69,10 +80,14 @@ class Model extends BaseModel {
              return Promise.resolve()
          }
         const data = {
-            title : this.dataBindModel.title,
-            completed : this.dataBindModel.completed
+            firstname : this.dataBindModel.firstname,
+            lastname : this.dataBindModel.lastname,
+            department: this.dataBindModel.department,
+            startdate: this.dataBindModel.startDate,
+            jobtitle: this.dataBindModel.jobTitle,
+            salary: this.dataBindModel.salary
         }
-         const url = `${this.APIS.Todo}${this.dataBindModel.id}`
+         const url = `${this.APIS.Employees}${this.dataBindModel.id}`
          return this.http.put(url, data)
                  .then( data => {
                      this.dataBindModel.updateResultMsg = 'Todo updated'

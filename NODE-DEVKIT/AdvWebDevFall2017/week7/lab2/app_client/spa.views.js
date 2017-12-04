@@ -1,10 +1,11 @@
 class View {
 
     get home() {
-        return Promise.resolve(`<section class="hero is-info is-small spacer">
-                    <div class="hero-body">
-                        <h1 class="title">Todo Crud Sample</h1>
-                    </div>
+        return Promise.resolve(`
+                <section class="hero is-info is-small spacer">
+                <div class="hero-body">
+                    <h1 class="title">Employee's</h1>
+                </div>
                 </section>
                 <p data-bind-model="deleteResultMsg" data-bind-safe data-bind-class="{'is-success': 'isDeleted', 'is-danger': '!isDeleted' }" class="notification is-spaced"></p>              
                 <table class="table is-spaced is-bordered is-hoverable is-fullwidth is-small">
@@ -17,28 +18,38 @@ class View {
                         <th></th>
                     </tr>
                   </thead>
-                  <tbody data-bind-model="todoTable"></tbody>
+                  <tbody data-bind-model="employeesTable"></tbody>
               </table>`)
     }
     
      get add() {
         return Promise.resolve(`<section class="hero is-info is-small spacer">
                     <div class="hero-body">
-                        <h1 class="title">Add New Todo</h1>
+                        <h1 class="title">Add New Employee</h1>
                     </div>
                 </section>
                 <form data-no-submit>
                     <div class="field">
                         <label class="label">Title</label>
-                        <input type="text" name="title" class="input" required />
+                        <input type="text" name="firstName" placeholder="First Name" class="input" required />
+                        <input type="text" name="lastName" placeholder="Last Name" class="input" required />
                     </div>
-                    <div class="field">
-                        <label class="label">Completed</label>
+                    <div class="department">
+                        <label class="label">Department</label>
                         <select name="completed" class="select" required>
                             <option value=""></option>
-                            <option value="true">true</option>
-                            <option value="false">false</option>
+                            <option value="manager">Manager</option>
+                            <option value="IT">IT</option>
+                            <option value="HR">HR</option>
+                            <option value="secretary">Secretary</option>
                         </select>
+                    </div>
+                    <div class="field">
+                        <input class="input" type="date" name="startDate" placeholder="Date" required>
+                        <br />
+                        <input class="input" type="text" name="jobTitle" placeholder="Job Title" required>
+                        <br />
+                        <input class="input" type="text" name="salary" placeholder="Salary" required>
                     </div>
                     <div class="field"> 
                         <input type="reset" value="reset" />

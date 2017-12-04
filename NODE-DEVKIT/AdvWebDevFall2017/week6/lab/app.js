@@ -9,7 +9,6 @@ var queryHandler = require('./queryhandler');
 require('./db');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
