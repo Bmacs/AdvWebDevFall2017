@@ -36,11 +36,11 @@ class Model extends BaseModel {
             return Promise.resolve()
         }
         const data = {
-            firstname : this.dataBindModel.firstname,
-            lastname : this.dataBindModel.lastname,
+            firstName : this.dataBindModel.firstName,
+            lastName : this.dataBindModel.lastName,
             department: this.dataBindModel.department,
-            startdate: this.dataBindModel.startDate,
-            jobtitle: this.dataBindModel.jobTitle,
+            startDate: this.dataBindModel.startDate,
+            jobTitle: this.dataBindModel.jobTitle,
             salary: this.dataBindModel.salary
         }                    
         return this.http.post(this.APIS.Employees, data)
@@ -54,7 +54,7 @@ class Model extends BaseModel {
     }
     
     goToUpdatePage(evt) {
-        this.redirect('update',{id: evt.target.dataset.id})
+        this.redirect('update',{id: evt.target.dataset._id})
         return Promise.resolve()
     }
         
@@ -68,7 +68,7 @@ class Model extends BaseModel {
                 startdate: this.dataBindModel.startDate.substring(0, data.startDate.indexOf("T")),
                 jobtitle: this.dataBindModel.jobTitle,
                 salary: this.dataBindModel.salary,
-                id: data.id }
+                _id: data._id }
             return data
         })     
     }
@@ -85,9 +85,10 @@ class Model extends BaseModel {
             department: this.dataBindModel.department,
             startdate: this.dataBindModel.startDate,
             jobtitle: this.dataBindModel.jobTitle,
-            salary: this.dataBindModel.salary
+            salary: this.dataBindModel.salary,
+            _id: this.dataBindModel._id
         }
-         const url = `${this.APIS.Employees}${this.dataBindModel.id}`
+         const url = `${this.APIS.Employees}${this.dataBindModel._id}`
          return this.http.put(url, data)
                  .then( data => {
                      this.dataBindModel.updateResultMsg = 'Todo updated'

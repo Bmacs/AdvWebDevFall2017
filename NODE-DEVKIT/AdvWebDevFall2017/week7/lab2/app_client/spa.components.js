@@ -1,12 +1,12 @@
 class Components {
     
-   static todoTable(data){
+   static employeesTable(data){
         if ( !Array.isArray(data) ) return Promise.resolve('')
         return Promise.resolve(`${data.map(row=>                                         
                     `<tr>
-                        <td>${row.id}</td>
-                        <td>${row.firstname}</td>
-                        <td>${row.lastname}</td>
+                        <td>${row._id}</td>
+                        <td>${row.firstName}</td>
+                        <td>${row.lastName}</td>
                         <td>${row.department}</td>
                         <td>${row.startDate}</td>
                         <td>${row.jobTitle}</td>

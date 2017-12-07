@@ -12,8 +12,12 @@ class View {
                   <thead>
                     <tr class="is-selected">
                         <th>ID</th>
-                        <th>Title</th>
-                        <th>Completed</th>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Job Title</th>
+                        <th>Salary</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -36,7 +40,7 @@ class View {
                     </div>
                     <div class="department">
                         <label class="label">Department</label>
-                        <select name="completed" class="select" required>
+                        <select name="department" class="select" required>
                             <option value=""></option>
                             <option value="manager">Manager</option>
                             <option value="IT">IT</option>
@@ -49,7 +53,7 @@ class View {
                         <br />
                         <input class="input" type="text" name="jobTitle" placeholder="Job Title" required>
                         <br />
-                        <input class="input" type="text" name="salary" placeholder="Salary" required>
+                        <input class="input" type="number" name="salary" placeholder="Salary" required>
                     </div>
                     <div class="field"> 
                         <input type="reset" value="reset" />
