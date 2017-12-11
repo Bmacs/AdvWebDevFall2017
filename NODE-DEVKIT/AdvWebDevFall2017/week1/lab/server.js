@@ -1,5 +1,3 @@
-
-
 var http = require('http');
 var url = require('url');
 var fileSystem = require('fs');
@@ -43,7 +41,7 @@ http.createServer(function (request, response) {
                 response.write(data.toString());
             }
 
-            if (fileName === 'index.html') {
+            if (fileName === 'index.html' || 'read-todo.html') {
                 response.writeHead(200, {'Content-Type': 'text/html'});
                 response.write(data.toString());
             }
